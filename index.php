@@ -13,7 +13,7 @@
   <body>
     <div id="app" class="bg-image-with-overlay-mahila">
       <div class=" main-block p-0 ">
-        <div class="container-fluid sidebar-top sidebar-nav-top">
+        <div class="container-fluid sidebar-top sidebar-nav-top header">
           <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
             <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
           </a>
@@ -105,6 +105,17 @@
     </div>
     <script src="./assets/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(window).on("scroll", function() {
+        if($(window).scrollTop() > 20) {
+            $(".sidebar-nav-top").addClass("active");
+            // alert("hi");
+        } else {
+            //remove the background property so it comes transparent again (defined in your css)
+          $(".sidebar-nav-top").removeClass("active");
+        }
+    });
+    </script>
   </body>
 </html>
