@@ -1,0 +1,6 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+<!-- Bootstrap CSS -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+<link rel="icon" type="image/x-icon" href="assets/img/logo.png">
