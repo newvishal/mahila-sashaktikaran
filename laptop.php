@@ -4,6 +4,11 @@
     
     <title>Samajwadi Laptop Distribution</title>
     <?php include './comman/header.php';?>
+    <?php include './config/db.php';?>
+    <?php
+      $QueryDistrict = "SELECT * FROM tbl_distict";
+      $result   = mysqli_query($conn,$QueryDistrict);
+    ?>
   </head>
   <body>
     <div id="app" class="bg-image-with-overlay-laptop">
@@ -64,21 +69,33 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="NoOfFamilyMember" class="text-uppercase">No Of Family Member / परिवार के सदस्य की संख्या</label>
-                        <input type="text" class="form-control" id="NoOfFamilyMember"/>
+                        <select class="form-control" id="NoOfFamilyMember">
+                          <?php
+                              for($i=1; $i <= 40; $i++) {
+                            ?>
+                              <option value="<?=$i?>"><?=$i?></option>
+                            <?php
+                            }
+                          ?>
+                        </select>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="District" class="text-uppercase">District / ज़िला</label>
-                        <select class="form-control" id="Assembly">
-                          <option></option>
+                        <select class="form-control" id="Assembly" name="DistrictId">
+                        <?php
+                            while($row = mysqli_fetch_assoc($result)) {
+                          ?>
+                          <option value="<?=$row["id"]?>"><?=$row["district_name"]?> </option>
+                          <?php } ?>
                         </select>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
-                        <select class="form-control" id="Assembly">
+                        <select class="form-control" id="Assembly" name="AssemblyId">
                           <option></option>
                         </select>
                       </div>
@@ -96,6 +113,7 @@
       </div>
     </div>
     <script src="./assets/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
 
   </body>

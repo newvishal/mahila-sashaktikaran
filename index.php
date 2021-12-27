@@ -74,11 +74,11 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="District" class="text-uppercase">District / ज़िला</label>
-                        <select class="form-control" id="Assembly">
+                        <select class="form-control" id="Assembly" name="DistrictId">
                           <?php
                             while($row = mysqli_fetch_assoc($result)) {
                           ?>
-                          <option><?=$row["district_name"]?> </option>
+                          <option value="<?=$row["id"]?>"><?=$row["district_name"]?> </option>
                           <?php } ?>
                         </select>
                       </div>
@@ -86,7 +86,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
-                        <select class="form-control" id="Assembly">
+                        <select class="form-control" id="Assembly" name="AssemblyId">
                           <option></option>
                         </select>
                       </div>
@@ -104,6 +104,7 @@
       </div>
     </div>
     <script src="./assets/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
