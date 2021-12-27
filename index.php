@@ -33,25 +33,25 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Name" class="text-uppercase">Name / नाम</label>
-                        <input type="text" class="form-control" id="Name"/>
+                        <input type="text" class="form-control" id="Name" name="Name" />
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="FatherName" class="text-uppercase">Father Name / पिता का नाम</label>
-                        <input type="text" class="form-control" id="FatherName"/>
+                        <input type="text" class="form-control" id="FatherName" name="FatherName" />
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="DOB" class="text-uppercase">DOB / जन्म तिथि</label>
-                        <input type="date" class="form-control" id="DOB"/>
+                        <input type="date" class="form-control" id="DOB" name="DOB" />
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Education" class="text-uppercase">Education / शिक्षा</label>
-                        <select class="form-control" id="Education">
+                        <select class="form-control" id="Education" name="Education">
                           <option>10th</option>
                           <option>12th</option>
                           <option>Graduation / स्नातक</option>
@@ -62,13 +62,13 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="MobileNo" class="text-uppercase">Mobile No / मोबाइल नंबर</label>
-                        <input type="number" class="form-control" id="MobileNo" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;"/>
+                        <input type="number" class="form-control" name="MobileNo" id="MobileNo" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;"/>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Address" class="text-uppercase">Address / पता</label>
-                        <input type="text" class="form-control" id="Address"/>
+                        <input type="text" class="form-control" name="Address" id="Address"/>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
