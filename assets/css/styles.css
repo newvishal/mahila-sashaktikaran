@@ -16,9 +16,9 @@
 .p-0 {
     padding: 0!important;
 }
-.main-block, .main-block-sm {
+/* .main-block, .main-block-sm {
     min-height: calc(100vh - 80px);
-}
+} */
 .main-title {
     font-size: 41px;
     line-height: 50px;
@@ -27,7 +27,7 @@
 .desc {
     font-size: 25px;
     line-height: 32px;
-    min-height: 96px;
+    min-height: 60px;
 }
 p {
     color: #fff;
@@ -163,3 +163,7 @@ img {
     background-blend-mode: multiply;
     background-position: center;
 }
+.active { 
+    background-color: #fff; 
+    transition: background-color 1000ms linear;
+  }
