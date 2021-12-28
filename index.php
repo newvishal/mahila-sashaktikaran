@@ -33,7 +33,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Name" class="text-uppercase">Name / नाम</label>
-                        <input type="text" class="form-control" id="Name"/>
+                        <input type="text" class="form-control" id="Name" pattern="[a-zA-Z][a-zA-Z ]{2,}"/>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -52,6 +52,7 @@
                       <div class="form-group">
                         <label for="Education" class="text-uppercase">Education / शिक्षा</label>
                         <select class="form-control" id="Education">
+                          <option value="" selected>Select Education</option>
                           <option>10th</option>
                           <option>12th</option>
                           <option>Graduation / स्नातक</option>
@@ -75,6 +76,7 @@
                       <div class="form-group">
                         <label for="District" class="text-uppercase">District / ज़िला</label>
                         <select class="form-control" id="Assembly" name="DistrictId">
+                          <option value="" selected>Select District</option>
                           <?php
                             while($row = mysqli_fetch_assoc($result)) {
                           ?>
@@ -87,7 +89,7 @@
                       <div class="form-group">
                         <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
                         <select class="form-control" id="Assembly" name="AssemblyId">
-                          <option></option>
+                          <option value="" selected>Select Assembly</option>
                         </select>
                       </div>
                     </div>
