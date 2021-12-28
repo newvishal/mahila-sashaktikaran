@@ -100,3 +100,37 @@ $("select[name='DistrictId']").change(function () {
     }
 });
 
+const dots = document.querySelectorAll(".dot-container button");
+const images = document.querySelectorAll(".image-container img");
+let i = 0; // current slide
+let j = 4; // total slides
+function next(){
+    document.getElementById("content" + (i+1)).classList.remove("active");
+    i = ( j + i + 1) % j;
+    document.getElementById("content" + (i+1)).classList.add("active");
+    indicator( i+ 1 );
+}
+function prev(){
+    document.getElementById("content" + (i+1)).classList.remove("active");
+    i = (j + i - 1) % j;
+    document.getElementById("content" + (i+1)).classList.add("active");
+    indicator(i+1);
+}
+function indicator(num){
+    dots.forEach(function(dot){
+        dot.style.background = "transparent";
+    });
+    var bgcolor = "linear-gradient(92.42deg,#ff0000 28.39%,#008000 105.23%)";
+    document.querySelector(".dot-container button:nth-child(" + num + ")").style.background = bgcolor;
+}
+function dot(index){
+    images.forEach(function(image){
+        image.classList.remove("active");
+        document.querySelector(".dot-container button:nth-child(" + index + ")").style.background = "transparent";
+    });
+    document.getElementById("content" + index).classList.add("active");
+    i = index - 1;
+    indicator(index);
+}
+setInterval(function () {next()}, 3000);
+

@@ -19,14 +19,20 @@
         $Address     = mysqli_real_escape_string($conn,$_POST["Address"]);
         $AssemblyId     = mysqli_real_escape_string($conn,$_POST["AssemblyId"]);
         $DistrictId     = mysqli_real_escape_string($conn,$_POST["DistrictId"]);
-        
-        $sql = "INSERT INTO Tbl_SamajwadiMahilaSashaktikaran (Name, FatherName, DOB, Education, MobileNo, Address, AssemblyId, DistrictId)
-        VALUES ('$Name','$FatherName','$DOB','$Education','$MobileNo','$Address','$AssemblyId','$DistrictId')";
-        $result = mysqli_query($conn,$sql);
-        if($result){
-          echo "<script type='text/javascript'>alert('Data Saved Successfully');</script>";
+        $duplicateCheck = "SELECT id from Tbl_SamajwadiMahilaSashaktikaran where Name = '$Name' AND FatherName = '$FatherName' AND DistrictId= $DistrictId AND AssemblyId = $AssemblyId";
+        $duplicateResult = mysqli_query($conn,$duplicateCheck);
+        $data=mysqli_fetch_assoc($duplicateResult);
+        if($data && count($data) > 0){
+            echo "<script type='text/javascript'>alert('Already Registered!');window.location.href='index.php';</script>";
         }else{
-          echo "<script type='text/javascript'>alert('Somthing Went Wrong...');</script>";
+          $sql = "INSERT INTO Tbl_SamajwadiMahilaSashaktikaran (Name, FatherName, DOB, Education, MobileNo, Address, AssemblyId, DistrictId)
+          VALUES ('$Name','$FatherName','$DOB','$Education','$MobileNo','$Address','$AssemblyId','$DistrictId')";
+          $result = mysqli_query($conn,$sql);
+          if($result){
+            echo "<script type='text/javascript'>alert('Data Saved Successfully');window.location.href='index.php';</script>";
+          }else{
+            echo "<script type='text/javascript'>alert('Somthing Went Wrong...');window.location.href='index.php';</script>";
+          }
         }
       }
     ?>
@@ -44,16 +50,9 @@
           
           <form method="post" action="index.php" onsubmit="return validate('mahila');">
             <div class="form">
-              <div class="header mobHide">
-                <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
-                  <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
-                </a>
-                  <h2 class="animation a1 text-primary">समाजवादी महिला सशक्तिकरण</h2>
-                  <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
-              </div> 
               <input type="text" class="form-field animation a3" placeholder="Name / नाम" id="Name" name="Name" >
               <input type="text" class="form-field animation a4" placeholder="Father Name / पिता का नाम" id="FatherName" name="FatherName" >
-              <input type="date" class="form-field animation a4" placeholder="DOB" id="DOB" name="DOB" >
+              <input type="text" class="form-field animation a4" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')" id="DOB" name="DOB" >
               <select class="form-field animation a4" id="Education" name="Education" >
                 <option value="" selected>Select Education / शिक्षा</option>
                 <option>10th</option>
@@ -73,14 +72,33 @@
               <select class="form-field animation a4" name="AssemblyId" id="AssemblyId">
                   <option value="" selected>Select Assembly / विधान-सभा</option>
               </select>
-              <input type="text" class="form-field animation a4" placeholder="Address / पता" name="Address" id="Address" >
+              <textarea type="text" class="form-field animation a4" placeholder="पता / Address" name="Address" id="Address" style="resize:none;padding-top:10px;"></textarea>
               <button type="submit" name="save" class="animation a6 btn btn-primary btn-gradient btn-rounded">Submit</button>
             </div>
           </form>
         </div>
-        <div class="right"></div>
+        <div class="right">
+          <div class="slider-main">
+              <div class="image-container">
+                <img class="img" src="./assets/img/1.jpg" id="content1" class="active">
+                <img class="img" src="./assets/img/2.jpg" id="content2">
+                <img  class="img" src="./assets/img/3.jpg" id="content3">
+                <img class="img" src="./assets/img/4.jpg" id="content4">
+              </div>
+              <div class="dot-container">
+                <button onclick = "dot(1)"></button>
+                <button onclick = "dot(2)"></button>
+                <button onclick = "dot(3)"></button>
+                <button onclick = "dot(4)"></button>
+              </div>
+            <button id="prev" onclick="prev()"> &lt; </button>
+            <button id="next" onclick="next()"> &gt; </button>
+            </div>
+          </div>
+        </div>
   </div>
   <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
+  
   </body>
 </html>
