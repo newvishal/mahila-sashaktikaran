@@ -72,11 +72,23 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Education" class="text-uppercase">Education / शिक्षा</label>
+<<<<<<< HEAD
+                        <select class="form-control" id="Education">
+                          <option value="" selected>Select Education</option>
+=======
                         <select class="form-control" id="Education" name="Education">
+<<<<<<< HEAD
                           <option value="10th">10th</option>
                           <option value="12th">12th</option>
                           <option value="Graduation">Graduation / स्नातक</option>
                           <option value="Post-Graduation">Post-Graduation / परा-स्नातक</option>
+=======
+>>>>>>> b51c764c7933dc08bd5927b5e6b7c16daa38a953
+                          <option>10th</option>
+                          <option>12th</option>
+                          <option>Graduation / स्नातक</option>
+                          <option>Post-Graduation / परा-स्नातक</option>
+>>>>>>> 9a712b13b0297a97d193a576de4aa947f52f988d
                         </select>
                       </div>
                     </div>
@@ -94,8 +106,14 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
+<<<<<<< HEAD
                         <label for="DistrictId" class="text-uppercase">District / ज़िला</label>
                         <select class="form-control" id="DistrictId" name="DistrictId">
+=======
+                        <label for="District" class="text-uppercase">District / ज़िला</label>
+                        <select class="form-control" id="Assembly" name="DistrictId">
+                          <option value="" selected>Select District</option>
+>>>>>>> 9a712b13b0297a97d193a576de4aa947f52f988d
                           <?php
                             while($row = mysqli_fetch_assoc($result)) {
                           ?>
@@ -106,9 +124,15 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
+<<<<<<< HEAD
                         <label for="AssemblyId" class="text-uppercase">Assembly / विधान सभा</label>
                         <select class="form-control" id="AssemblyId" name="AssemblyId">
                           <option></option>
+=======
+                        <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
+                        <select class="form-control" id="Assembly" name="AssemblyId">
+                          <option value="" selected>Select Assembly</option>
+>>>>>>> 9a712b13b0297a97d193a576de4aa947f52f988d
                         </select>
                       </div>
                     </div>

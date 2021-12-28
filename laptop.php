@@ -45,13 +45,19 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="DOB" class="text-uppercase">DOB / जन्म तिथि</label>
-                        <input type="text" class="form-control" id="DOB"/>
+                        <input type="date" class="form-control" id="DOB"/>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Education" class="text-uppercase">Education / शिक्षा</label>
-                        <input type="text" class="form-control" id="Education"/>
+                        <select class="form-control" id="Education">
+                          <option value="" selected>Select Education</option>
+                          <option>10th</option>
+                          <option>12th</option>
+                          <option>Graduation / स्नातक</option>
+                          <option>Post-Graduation / परा-स्नातक</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -60,12 +66,7 @@
                         <input type="text" class="form-control" id="MobileNo"/>
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Address" class="text-uppercase">Address / पता</label>
-                        <input type="text" class="form-control" id="Address"/>
-                      </div>
-                    </div>
+                    
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="NoOfFamilyMember" class="text-uppercase">No Of Family Member / परिवार के सदस्य की संख्या</label>
@@ -84,6 +85,7 @@
                       <div class="form-group">
                         <label for="District" class="text-uppercase">District / ज़िला</label>
                         <select class="form-control" id="Assembly" name="DistrictId">
+                        <option value="" selected>Select District</option>
                         <?php
                             while($row = mysqli_fetch_assoc($result)) {
                           ?>
@@ -96,8 +98,16 @@
                       <div class="form-group">
                         <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
                         <select class="form-control" id="Assembly" name="AssemblyId">
-                          <option></option>
+                        <option value="" selected>Select Assembly</option>
                         </select>
+                      </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-12 col-sm-">
+                      <div class="form-group">
+                        <label for="Address" class="text-uppercase">Address / पता</label>
+                        <textarea type="text" class="form-control" id="Address" style="resize:none;"></textarea>
                       </div>
                     </div>
                   </div>
@@ -115,6 +125,17 @@
     <script src="./assets/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(window).on("scroll", function() {
+        if($(window).scrollTop() > 20) {
+            $(".sidebar-nav-top").addClass("active");
+            // alert("hi");
+        } else {
+            //remove the background property so it comes transparent again (defined in your css)
+          $(".sidebar-nav-top").removeClass("active");
+        }
+    });
+    </script>
   </body>
 </html>
