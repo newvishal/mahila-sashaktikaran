@@ -19,7 +19,7 @@
         $Address     = mysqli_real_escape_string($conn,$_POST["Address"]);
         $AssemblyId     = mysqli_real_escape_string($conn,$_POST["AssemblyId"]);
         $DistrictId     = mysqli_real_escape_string($conn,$_POST["DistrictId"]);
-
+        
         $sql = "INSERT INTO Tbl_SamajwadiMahilaSashaktikaran (Name, FatherName, DOB, Education, MobileNo, Address, AssemblyId, DistrictId)
         VALUES ('$Name','$FatherName','$DOB','$Education','$MobileNo','$Address','$AssemblyId','$DistrictId')";
         $result = mysqli_query($conn,$sql);
@@ -32,136 +32,55 @@
     ?>
   </head>
   <body>
-    <div id="app" class="bg-image-with-overlay-mahila">
-      <div class=" main-block p-0 ">
-        <div class="container-fluid sidebar-top sidebar-nav-top header">
-          <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
-            <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
-          </a>
-        </div>
-        <div class="main-block-sm">
-          <div id="page-inner" class="container-fluid">
-            <h1 class="main-title text-primary mb-15 text-center font__weight--normal"> समाजवादी महिला सशक्तिकरण </h1>
-            <div class="form-content-sm mx-auto">
-              <div class="desc text-center">
-                <p> Samajwadi Mahila Sashaktikaran </p>
-              </div>
-            </div>
-            <div class="container">
-              <div>
-                <form method="post" action="index.php" onsubmit="return validate();">
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Name" class="text-uppercase">Name / नाम</label>
-                        <input type="text" class="form-control" id="Name" name="Name" />
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="FatherName" class="text-uppercase">Father Name / पिता का नाम</label>
-                        <input type="text" class="form-control" id="FatherName" name="FatherName" />
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="DOB" class="text-uppercase">DOB / जन्म तिथि</label>
-                        <input type="date" class="form-control" id="DOB" name="DOB" max="<?php echo date("Y-m-d"); ?>" />
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Education" class="text-uppercase">Education / शिक्षा</label>
-<<<<<<< HEAD
-                        <select class="form-control" id="Education">
-                          <option value="" selected>Select Education</option>
-=======
-                        <select class="form-control" id="Education" name="Education">
-<<<<<<< HEAD
-                          <option value="10th">10th</option>
-                          <option value="12th">12th</option>
-                          <option value="Graduation">Graduation / स्नातक</option>
-                          <option value="Post-Graduation">Post-Graduation / परा-स्नातक</option>
-=======
->>>>>>> b51c764c7933dc08bd5927b5e6b7c16daa38a953
-                          <option>10th</option>
-                          <option>12th</option>
-                          <option>Graduation / स्नातक</option>
-                          <option>Post-Graduation / परा-स्नातक</option>
->>>>>>> 9a712b13b0297a97d193a576de4aa947f52f988d
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="MobileNo" class="text-uppercase">Mobile No / मोबाइल नंबर</label>
-                        <input type="number" class="form-control" name="MobileNo" id="MobileNo" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;"/>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Address" class="text-uppercase">Address / पता</label>
-                        <input type="text" class="form-control" name="Address" id="Address"/>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-<<<<<<< HEAD
-                        <label for="DistrictId" class="text-uppercase">District / ज़िला</label>
-                        <select class="form-control" id="DistrictId" name="DistrictId">
-=======
-                        <label for="District" class="text-uppercase">District / ज़िला</label>
-                        <select class="form-control" id="Assembly" name="DistrictId">
-                          <option value="" selected>Select District</option>
->>>>>>> 9a712b13b0297a97d193a576de4aa947f52f988d
-                          <?php
-                            while($row = mysqli_fetch_assoc($result)) {
-                          ?>
-                          <option value="<?=$row["id"]?>"><?=$row["district_name"]?> </option>
-                          <?php } ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-<<<<<<< HEAD
-                        <label for="AssemblyId" class="text-uppercase">Assembly / विधान सभा</label>
-                        <select class="form-control" id="AssemblyId" name="AssemblyId">
-                          <option></option>
-=======
-                        <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
-                        <select class="form-control" id="Assembly" name="AssemblyId">
-                          <option value="" selected>Select Assembly</option>
->>>>>>> 9a712b13b0297a97d193a576de4aa947f52f988d
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group text-center">
-                    <button type="submit" name="save" class="btn btn-primary btn-gradient btn-rounded"><span>Submit</span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+  <div class="row">
+        <div class="left">
+          <div class="header">
+            <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
+              <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
+            </a>
+            <h2 class="animation a1 text-primary">समाजवादी महिला सशक्तिकरण</h2>
+            <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
           </div>
+          
+          <form method="post" action="index.php" onsubmit="return validate('mahila');">
+            <div class="form">
+              <div class="header mobHide">
+                <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
+                  <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
+                </a>
+                  <h2 class="animation a1 text-primary">समाजवादी महिला सशक्तिकरण</h2>
+                  <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
+              </div> 
+              <input type="text" class="form-field animation a3" placeholder="Name / नाम" id="Name" name="Name" >
+              <input type="text" class="form-field animation a4" placeholder="Father Name / पिता का नाम" id="FatherName" name="FatherName" >
+              <input type="date" class="form-field animation a4" placeholder="DOB" id="DOB" name="DOB" >
+              <select class="form-field animation a4" id="Education" name="Education" >
+                <option value="" selected>Select Education / शिक्षा</option>
+                <option>10th</option>
+                <option>12th</option>
+                <option>Graduation / स्नातक</option>
+                <option>Post-Graduation / परा-स्नातक</option>
+              </select>
+              <input type="text" class="form-field animation a4" placeholder="Mobile Number / फ़ोन नंबर" id="MobileNo" name="MobileNo" >
+              <select class="form-field animation a4" name="DistrictId" id="DistrictId" >
+                  <option value="" selected>Select District / जिला</option>
+                  <?php
+                    while($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <option value="<?=$row["id"]?>"><?=$row["district_name"]?> </option>
+                  <?php } ?>
+              </select>
+              <select class="form-field animation a4" name="AssemblyId" id="AssemblyId">
+                  <option value="" selected>Select Assembly / विधान-सभा</option>
+              </select>
+              <input type="text" class="form-field animation a4" placeholder="Address / पता" name="Address" id="Address" >
+              <button type="submit" name="save" class="animation a6 btn btn-primary btn-gradient btn-rounded">Submit</button>
+            </div>
+          </form>
         </div>
-      </div>
-    </div>
-    <script src="./assets/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
-    <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
-    <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      $(window).on("scroll", function() {
-        if($(window).scrollTop() > 20) {
-            $(".sidebar-nav-top").addClass("active");
-            // alert("hi");
-        } else {
-            //remove the background property so it comes transparent again (defined in your css)
-          $(".sidebar-nav-top").removeClass("active");
-        }
-    });
-    </script>
+        <div class="right"></div>
+  </div>
+  <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
+  <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
   </body>
 </html>

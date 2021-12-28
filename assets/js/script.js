@@ -6,8 +6,9 @@
 //     }
 //     return true;
 // }
+console.log("ok");
 
-function validate() {
+function validate(FormName) {
     var Name = document.getElementById("Name").value;
     var FatherName = document.getElementById("FatherName").value;
     var MobileNo = document.getElementById("MobileNo").value;
@@ -43,6 +44,8 @@ function validate() {
         alert("Please Select Your Education");
         return false;
     }
+
+
     if(!MobileNo) {
         alert("Please Enter Your Mobile No");
         return false;
@@ -52,16 +55,26 @@ function validate() {
             return false
         }
     }
-    if(!Address) {
-        alert("Please Enter Your Address");
-        return false;
+
+    if(FormName == "laptop") {
+        var NoOfFamilyMembers = document.getElementById("NoOfFamilyMembers").value;
+        if(!NoOfFamilyMembers) {
+            alert("Please Select Number Of Family Member");
+            return false;
+        }
     }
+    
     if(!AssemblyId) {
         alert("Please Select Your Assembly");
         return false;
     }
     if(!DistrictId) {
         alert("Please Select Your District");
+        return false;
+    }
+
+    if(!Address) {
+        alert("Please Enter Your Address");
         return false;
     }
     

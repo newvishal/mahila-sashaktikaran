@@ -9,133 +9,90 @@
       $QueryDistrict = "SELECT * FROM tbl_distict";
       $result   = mysqli_query($conn,$QueryDistrict);
     ?>
+    <?php
+      if(isset($_POST['save'])) {
+        $Name     = mysqli_real_escape_string($conn,$_POST["Name"]);
+        $FatherName     = mysqli_real_escape_string($conn,$_POST["FatherName"]);
+        $DOB     = mysqli_real_escape_string($conn,$_POST["DOB"]);
+        $Education     = mysqli_real_escape_string($conn,$_POST["Education"]);
+        $NoOfFamilyMembers     = mysqli_real_escape_string($conn,$_POST["NoOfFamilyMembers"]);
+        $MobileNo     = mysqli_real_escape_string($conn,$_POST["MobileNo"]);
+        $Address     = mysqli_real_escape_string($conn,$_POST["Address"]);
+        $AssemblyId     = mysqli_real_escape_string($conn,$_POST["AssemblyId"]);
+        $DistrictId     = mysqli_real_escape_string($conn,$_POST["DistrictId"]);
+
+        $sql = "INSERT INTO Tbl_SamajwadiLaptopDistribution (Name, FatherName, DOB, Education, NoOfFamilyMembers, MobileNo, Address, AssemblyId, DistrictId)
+        VALUES ('$Name','$FatherName','$DOB','$Education','$NoOfFamilyMembers','$MobileNo','$Address','$AssemblyId','$DistrictId')";
+        $result = mysqli_query($conn,$sql);
+        if($result){
+          echo "<script type='text/javascript'>alert('Data Saved Successfully');</script>";
+        }else{
+          echo "<script type='text/javascript'>alert('Somthing Went Wrong...');</script>";
+        }
+      }
+    ?>
   </head>
   <body>
-    <div id="app" class="bg-image-with-overlay-laptop">
-      <div class=" main-block p-0">
-      <div class="container-fluid sidebar-top sidebar-nav-top">
-          <a href="https://www.samajwadiparty.in/" target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
-            <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
-          </a>
-        </div>
-        <div class="main-block-sm">
-          <div id="page-inner" class="container-fluid">
-            <h1 class="main-title text-primary mb-34 text-center font__weight--normal"> समाजवादी लैपटॉप वितरण </h1>
-            <div class="form-content-sm mx-auto">
-              <div class="desc text-center">
-                <p> Samajwadi Laptop Distribution </p>
-              </div>
-            </div>
-            <div class="container">
-              <div>
-                <form action="">
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Name" class="text-uppercase">Name / नाम</label>
-                        <input type="text" class="form-control" id="Name"/>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="FatherName" class="text-uppercase">Father Name / पिता का नाम</label>
-                        <input type="text" class="form-control" id="FatherName"/>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="DOB" class="text-uppercase">DOB / जन्म तिथि</label>
-                        <input type="date" class="form-control" id="DOB"/>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Education" class="text-uppercase">Education / शिक्षा</label>
-                        <select class="form-control" id="Education">
-                          <option value="" selected>Select Education</option>
-                          <option>10th</option>
-                          <option>12th</option>
-                          <option>Graduation / स्नातक</option>
-                          <option>Post-Graduation / परा-स्नातक</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="MobileNo" class="text-uppercase">Mobile No / मोबाइल नंबर</label>
-                        <input type="text" class="form-control" id="MobileNo"/>
-                      </div>
-                    </div>
-                    
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="NoOfFamilyMember" class="text-uppercase">No Of Family Member / परिवार के सदस्य की संख्या</label>
-                        <select class="form-control" id="NoOfFamilyMember">
-                          <?php
-                              for($i=1; $i <= 40; $i++) {
-                            ?>
-                              <option value="<?=$i?>"><?=$i?></option>
-                            <?php
-                            }
-                          ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="District" class="text-uppercase">District / ज़िला</label>
-                        <select class="form-control" id="Assembly" name="DistrictId">
-                        <option value="" selected>Select District</option>
-                        <?php
-                            while($row = mysqli_fetch_assoc($result)) {
-                          ?>
-                          <option value="<?=$row["id"]?>"><?=$row["district_name"]?> </option>
-                          <?php } ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
-                        <select class="form-control" id="Assembly" name="AssemblyId">
-                        <option value="" selected>Select Assembly</option>
-                        </select>
-                      </div>
-                    </div>
-                    
-                    
-                    <div class="col-xs-12 col-sm-">
-                      <div class="form-group">
-                        <label for="Address" class="text-uppercase">Address / पता</label>
-                        <textarea type="text" class="form-control" id="Address" style="resize:none;"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-gradient  btn-rounded"><span>Submit</span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+  <div class="row">
+        <div class="left">
+          <div class="header">
+            <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
+              <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
+            </a>
+            <h2 class="animation a1 text-primary">समाजवादी लैपटॉप वितरण</h2>
+            <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
           </div>
+          <form method="post" action="laptop.php" onsubmit="return validate('laptop');">
+            <div class="form">
+              <div class="header mobHide">
+                <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
+                  <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
+                </a>
+                  <h2 class="animation a1 text-primary">समाजवादी लैपटॉप वितरण</h2>
+                  <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
+              </div>
+              <input type="text" class="form-field animation a3" placeholder="Name / नाम" id="Name" name="Name">
+              <input type="text" class="form-field animation a4" placeholder="Father Name / पिता का नाम" id="FatherName" name="FatherName">
+              <input type="date" class="form-field animation a4" placeholder="DOB" id="DOB" name="DOB" >
+              <select class="form-field animation a4" id="Education" name="Education">
+                <option value="" selected>Select Education / शिक्षा</option>
+                <option>10th</option>
+                <option>12th</option>
+                <option>Graduation / स्नातक</option>
+                <option>Post-Graduation / परा-स्नातक</option>
+              </select>
+              <input type="text" class="form-field animation a4" placeholder="Mobile Number / फ़ोन नंबर" id="MobileNo" name="MobileNo">
+              <select class="form-field animation a4" id="NoOfFamilyMembers" name="NoOfFamilyMembers">
+                  <option value="" selected>No. of family members / परिवार के सदस्यों की संख्या</option>
+                  <?php
+                      for($i=1; $i <= 40; $i++) {
+                      ?>
+                        <option value="<?=$i?>"><?=$i?></option>
+                      <?php
+                      }
+                    ?>
+                  </select>
+              </select>
+              <select class="form-field animation a4" name="DistrictId" id="DistrictId">
+                  <option value="" selected>Select District / जिला</option>
+                  <?php
+                    while($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <option value="<?=$row["id"]?>"><?=$row["district_name"]?> </option>
+                  <?php } ?>
+              </select>
+              <select class="form-field animation a4" name="AssemblyId" id="AssemblyId">
+                  <option value="" selected>Select Assembly / विधान-सभा</option>
+              </select>
+              <input type="text" class="form-field animation a4" placeholder="Address / पता" name="Address" id="Address">
+              <button type="submit" name="save" class="animation a6 btn btn-primary btn-gradient btn-rounded">Submit</button>
+            </div>
+          </form>
         </div>
-      </div>
-    </div>
+        <div class="right-bg__image"></div>
+  </div>
     <script src="./assets/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/jquery-3.3.1.js"  crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"  crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      $(window).on("scroll", function() {
-        if($(window).scrollTop() > 20) {
-            $(".sidebar-nav-top").addClass("active");
-            // alert("hi");
-        } else {
-            //remove the background property so it comes transparent again (defined in your css)
-          $(".sidebar-nav-top").removeClass("active");
-        }
-    });
-    </script>
   </body>
 </html>
