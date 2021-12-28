@@ -19,8 +19,8 @@ body {
 
 .row {
   display: flex;
-  height: 98vh;
-  margin: 0px auto;
+  /* height: 98vh; */
+  margin: -20px auto;
   padding: 0px auto;
 }
 
@@ -44,10 +44,19 @@ body {
   flex: 1;
   /* background-color: black; */
   transition: 1s;
-  background-image: url(./assets/img/SP_AY013568.jpg);
+  /* height: 773px; */
+  /* background-image: url(./assets/img/SP_AY013568.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
+  display: block;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header > h2 {
@@ -234,13 +243,7 @@ select{
     display: none;
 }
 @media only screen and (min-width: 320px) {
-    .header {
-        display: none;
-    }
-    .mobHide {
-        display: block;
-        margin-top: 50px;
-    }
+    
     .form {
         max-width: 100%;
         display: flex;
@@ -249,6 +252,7 @@ select{
     .left {
         overflow: scroll;
         display: flex;
+        flex: 1;
         /* flex-wrap: wrap; */
         /* flex-direction: column; */
         justify-content: center;
@@ -261,42 +265,19 @@ select{
         -webkit-animation-delay: 1s;
         animation-delay: 1s;
     }
-}
-@media only screen and (max-width: 320px) {
-    .header {
-        display: none;
-    }
-    .mobHide {
-        display: block;
-        margin-top: 250px;
-    }
-    .form {
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .left {
-        overflow: scroll;
-        display: flex;
-        /* flex-wrap: wrap; */
-        /* flex-direction: column; */
-        justify-content: center;
-        -webkit-animation-name: left;
-        animation-name: left;
-        -webkit-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s;
+    .right{
+      display: none;
+      flex: 1;
     }
 }
+
 @media (min-width: 1200px) and (max-width : 2200px){
     .left {
-        overflow: scroll;
+        overflow: hidden;
         display: flex;
-        /* flex-wrap: wrap; */
-        /* flex-direction: column; */
+        flex: 0.3;
+        flex-wrap: wrap;
+        flex-direction: column;
         justify-content: center;
         -webkit-animation-name: left;
         animation-name: left;
@@ -306,13 +287,104 @@ select{
         animation-fill-mode: both;
         -webkit-animation-delay: 1s;
         animation-delay: 1s;
+        transform: translate(15px,10px);
+    }
+    .right{
+      display: block;
+      display: flex;
+      /* background-color: black; */
+      transition: 1s;
+      /* height: 773px; */
+      /* background-image: url(./assets/img/SP_AY013568.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center; */
     }
 }
+
 .profile-image{
   height: 80px;
   width: 140px;
-  transform: translate(110px, -10px);
+  /* transform: translate(50px, -10px); */
  
+}
+.slider-main{
+    background-color: #ffffff;
+    width: 70%;
+    height: 781px;
+    position: absolute;
+    transform: translate(-30%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 15px 30px rgb(0 0 0 / 30%);
+    transition: 1s;
+}
+.image-container{
+    position: relative;
+}
+
+.img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.active{
+    display: block;
+    animation-name: left;
+}
+.dot-container{
+    width: 250px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+button{
+    outline: none;
+    cursor: pointer;
+}
+
+.dot-container button{
+    height: 15px;
+    width: 50px;
+    border-radius: 10%;
+    border: 3px solid linear-gradient(
+92.42deg,#ff0000 28.39%,#008000 105.23%);
+    background-color: transparent;
+    border-radius: 15px;
+}
+
+.dot-container button:nth-child(1){
+    background: linear-gradient(
+92.42deg,#ff0000 28.39%,#008000 105.23%);
+}
+#prev,#next{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    background: linear-gradient(
+92.42deg,#ff0000 28.39%,#008000 105.23%);
+    color: #ffffff;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+#prev{
+    left: 5px;
+}
+
+#next{
+    right: 5px;
 }
     </style>
 </head>
@@ -324,41 +396,86 @@ select{
               <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
             </a>
             <h2 class="animation a1 text-primary">समाजवादी लैपटॉप वितरण</h2>
-            <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
           </div>
-          <div class="form">
-            <div class="header mobHide">
-              <a href="https://www.samajwadiparty.in/"  target="_blank" class="sidebar-logo pointer" title="Samajwadi Party">
-                <img  src="./assets/img/logo.png" alt="" class="profile-image" alt="Samajwadi Party">
-              </a>
-                <h2 class="animation a1 text-primary">समाजवादी लैपटॉप वितरण</h2>
-                <!-- <h4 class="animation a2">Log in to your account using email and password</h4> -->
+          <form action="#">
+            <div class="form">
+              <input type="text" class="form-field animation a3" placeholder="Name / नाम">
+              <input type="text" class="form-field animation a4" placeholder="Father Name / पिता का नाम">
+              <input type="text" class="form-field animation a4" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')">
+              <select class="form-field animation a4" id="Education">
+                <option value="" selected>Select Education / शिक्षा</option>
+                <option>10th</option>
+                <option>12th</option>
+                <option>Graduation / स्नातक</option>
+                <option>Post-Graduation / परा-स्नातक</option>
+              </select>
+              <input type="text" class="form-field animation a4" placeholder="Mobile Number / फ़ोन नंबर">
+              <input type="password" class="form-field animation a4" placeholder="No. of family members / परिवार के सदस्यों की संख्या">
+              <select class="form-field animation a4" id="Assembly" name="DistrictId">
+                  <option value="" selected>Select District / जिला</option>
+                
+              </select>
+              <select class="form-field animation a4" id="Assembly" name="AssemblyId">
+                  <option value="" selected>Select Assembly / विधान-सभा</option>
+              </select>
+              <input type="password" class="form-field animation a4" placeholder="Address / पता">
+              <button class="animation a6 btn btn-primary btn-gradient btn-rounded">Submit</button>
             </div>
-            <input type="text" class="form-field animation a3" placeholder="Name / नाम">
-            <input type="text" class="form-field animation a4" placeholder="Father Name / पिता का नाम">
-            <input type="date" class="form-field animation a4" placeholder="DOB">
-            <select class="form-field animation a4" id="Education">
-              <option value="" selected>Select Education / शिक्षा</option>
-              <option>10th</option>
-              <option>12th</option>
-              <option>Graduation / स्नातक</option>
-              <option>Post-Graduation / परा-स्नातक</option>
-            </select>
-            <input type="text" class="form-field animation a4" placeholder="Mobile Number / फ़ोन नंबर">
-            <input type="password" class="form-field animation a4" placeholder="No. of family members / परिवार के सदस्यों की संख्या">
-            <select class="form-field animation a4" id="Assembly" name="DistrictId">
-                <option value="" selected>Select District / जिला</option>
-               
-            </select>
-            <select class="form-field animation a4" id="Assembly" name="AssemblyId">
-                <option value="" selected>Select Assembly / विधान-सभा</option>
-            </select>
-            <input type="password" class="form-field animation a4" placeholder="Address / पता">
-            <button class="animation a6 btn btn-primary btn-gradient btn-rounded">Submit</button>
+          </form>  
+        </div>
+        <div class="right">
+          <div class="slider-main">
+            <div class="image-container">
+              <img class="img" src="./assets/img/1.jpg" id="content1" class="active">
+              <img class="img" src="./assets/img/2.jpg" id="content2">
+              <img  class="img" src="./assets/img/3.jpg" id="content3">
+              <img class="img" src="./assets/img/4.jpg" id="content4">
+            </div>
+            <div class="dot-container">
+              <button onclick = "dot(1)"></button>
+              <button onclick = "dot(2)"></button>
+              <button onclick = "dot(3)"></button>
+              <button onclick = "dot(4)"></button>
+           </div>
+           <button id="prev" onclick="prev()"> &lt; </button>
+           <button id="next" onclick="next()"> &gt; </button>
           </div>
         </div>
-        <div class="right"></div>
-      </div>
-      
+    </div>
+      <script>
+        const dots = document.querySelectorAll(".dot-container button");
+        const images = document.querySelectorAll(".image-container img");
+        let i = 0; // current slide
+        let j = 4; // total slides
+        function next(){
+            document.getElementById("content" + (i+1)).classList.remove("active");
+            i = ( j + i + 1) % j;
+            document.getElementById("content" + (i+1)).classList.add("active");
+            indicator( i+ 1 );
+        }
+        function prev(){
+            document.getElementById("content" + (i+1)).classList.remove("active");
+            i = (j + i - 1) % j;
+            document.getElementById("content" + (i+1)).classList.add("active");
+            indicator(i+1);
+        }
+        function indicator(num){
+            dots.forEach(function(dot){
+                dot.style.background = "transparent";
+            });
+            var bgcolor = "linear-gradient(92.42deg,#ff0000 28.39%,#008000 105.23%)";
+            document.querySelector(".dot-container button:nth-child(" + num + ")").style.background = bgcolor;
+        }
+        function dot(index){
+            images.forEach(function(image){
+                image.classList.remove("active");
+                document.querySelector(".dot-container button:nth-child(" + index + ")").style.background = "transparent";
+            });
+            document.getElementById("content" + index).classList.add("active");
+            i = index - 1;
+            indicator(index);
+        }
+        setInterval(function () {next()}, 3000);
+      </script>
 </body>
 </html>
