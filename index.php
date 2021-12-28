@@ -9,6 +9,27 @@
       $QueryDistrict = "SELECT * FROM tbl_distict";
       $result   = mysqli_query($conn,$QueryDistrict);
     ?>
+    <?php
+      if(isset($_POST['save'])) {
+        $Name     = mysqli_real_escape_string($conn,$_POST["Name"]);
+        $FatherName     = mysqli_real_escape_string($conn,$_POST["FatherName"]);
+        $DOB     = mysqli_real_escape_string($conn,$_POST["DOB"]);
+        $Education     = mysqli_real_escape_string($conn,$_POST["Education"]);
+        $MobileNo     = mysqli_real_escape_string($conn,$_POST["MobileNo"]);
+        $Address     = mysqli_real_escape_string($conn,$_POST["Address"]);
+        $AssemblyId     = mysqli_real_escape_string($conn,$_POST["AssemblyId"]);
+        $DistrictId     = mysqli_real_escape_string($conn,$_POST["DistrictId"]);
+
+        $sql = "INSERT INTO Tbl_SamajwadiMahilaSashaktikaran (Name, FatherName, DOB, Education, MobileNo, Address, AssemblyId, DistrictId)
+        VALUES ('$Name','$FatherName','$DOB','$Education','$MobileNo','$Address','$AssemblyId','$DistrictId')";
+        $result = mysqli_query($conn,$sql);
+        if($result){
+          echo "<script type='text/javascript'>alert('Data Saved Successfully');</script>";
+        }else{
+          echo "<script type='text/javascript'>alert('Somthing Went Wrong...');</script>";
+        }
+      }
+    ?>
   </head>
   <body>
     <div id="app" class="bg-image-with-overlay-mahila">
@@ -28,7 +49,7 @@
             </div>
             <div class="container">
               <div>
-                <form action="">
+                <form method="post" action="index.php" onsubmit="return validate();">
                   <div class="row">
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
@@ -45,17 +66,17 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="DOB" class="text-uppercase">DOB / जन्म तिथि</label>
-                        <input type="date" class="form-control" id="DOB" name="DOB" />
+                        <input type="date" class="form-control" id="DOB" name="DOB" max="<?php echo date("Y-m-d"); ?>" />
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="Education" class="text-uppercase">Education / शिक्षा</label>
                         <select class="form-control" id="Education" name="Education">
-                          <option>10th</option>
-                          <option>12th</option>
-                          <option>Graduation / स्नातक</option>
-                          <option>Post-Graduation / परा-स्नातक</option>
+                          <option value="10th">10th</option>
+                          <option value="12th">12th</option>
+                          <option value="Graduation">Graduation / स्नातक</option>
+                          <option value="Post-Graduation">Post-Graduation / परा-स्नातक</option>
                         </select>
                       </div>
                     </div>
@@ -73,8 +94,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                        <label for="District" class="text-uppercase">District / ज़िला</label>
-                        <select class="form-control" id="Assembly" name="DistrictId">
+                        <label for="DistrictId" class="text-uppercase">District / ज़िला</label>
+                        <select class="form-control" id="DistrictId" name="DistrictId">
                           <?php
                             while($row = mysqli_fetch_assoc($result)) {
                           ?>
@@ -85,15 +106,15 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                        <label for="Assembly" class="text-uppercase">Assembly / विधान सभा</label>
-                        <select class="form-control" id="Assembly" name="AssemblyId">
+                        <label for="AssemblyId" class="text-uppercase">Assembly / विधान सभा</label>
+                        <select class="form-control" id="AssemblyId" name="AssemblyId">
                           <option></option>
                         </select>
                       </div>
                     </div>
                   </div>
                   <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-gradient btn-rounded"><span>Submit</span>
+                    <button type="submit" name="save" class="btn btn-primary btn-gradient btn-rounded"><span>Submit</span>
                     </button>
                   </div>
                 </form>
