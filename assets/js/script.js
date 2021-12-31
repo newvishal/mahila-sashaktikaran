@@ -81,6 +81,60 @@ function validate(FormName) {
     return true
 }
 
+
+function ValidateVidyut() {
+    var Name = document.getElementById("Name").value;
+    var FatherName = document.getElementById("FatherName").value;
+    var Age = document.getElementById("Age").value;
+    var Education = document.getElementById("Education").value;
+    var NoOfFamilyMembers = document.getElementById("NoOfFamilyMembers").value;
+    var PresentBill = document.getElementById("PresentBill").value;
+
+    if(!Name) {
+        alert("Please Enter Your Name");
+        return false;
+    } else {
+        if(! /^[a-zA-Z ]{2,30}$/.test(Name)) {
+            alert("Name Not Valid")
+            return false
+        }
+    }
+    if(!FatherName) {
+        alert("Please Enter Your Father Name");
+        return false;
+    } else {
+        if(! /^[a-zA-Z ]{2,30}$/.test(FatherName)) {
+            alert("Father Name Not Valid")
+            return false
+        }
+    }
+    if(!Age) {
+        alert("Please Enter Your Age");
+        return false;
+    }
+    if(!Education) {
+        alert("Please Select Your Education");
+        return false;
+    }
+ 
+    if(!NoOfFamilyMembers) {
+        alert("Please Select Number Of Family Member");
+        return false;
+    }
+
+    if(!PresentBill) {
+        alert("Please Enter Your Present Bill Aprox");
+        return false;
+    } else {
+        if(parseInt(PresentBill) < 0) {
+            alert("Please Enter Valid Bill");
+            return false;
+        }
+    }
+    
+    return true
+}
+
 $("select[name='DistrictId']").change(function () {
     var districtID = $(this).val();
     if(districtID) {

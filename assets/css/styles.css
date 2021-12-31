@@ -13,6 +13,7 @@
     /* height: 98vh; */
     margin: -20px auto;
     padding: 0px auto;
+    justify-content: center;
   }
   
   .left {
@@ -274,6 +275,30 @@
         display: none;
         flex: 1;
       }
+  }
+
+  @media (min-width: 768px) and (max-width : 1366px) {
+    .left {
+      flex-grow: 1;
+      overflow: hidden;
+      -webkit-animation-name: left;
+      animation-name: left;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-delay: 1s;
+      animation-delay: 1s;
+      /* transform: translate(-10px,15px); */
+    }
+    .right{
+      display: none;
+      flex: 1;
+    }
+    .right-laptop{
+      display: none;
+      flex: 1;
+    }
   }
   
   @media (min-width: 1200px) and (max-width : 2200px){
