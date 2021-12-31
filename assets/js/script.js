@@ -87,6 +87,7 @@ function ValidateVidyut() {
     var FatherName = document.getElementById("FatherName").value;
     var Age = document.getElementById("Age").value;
     var Education = document.getElementById("Education").value;
+    var MobileNo = document.getElementById("MobileNo").value;
     var NoOfFamilyMembers = document.getElementById("NoOfFamilyMembers").value;
     var PresentBill = document.getElementById("PresentBill").value;
 
@@ -116,7 +117,15 @@ function ValidateVidyut() {
         alert("Please Select Your Education");
         return false;
     }
- 
+    if(!MobileNo) {
+        alert("Please Enter Your Mobile No");
+        return false;
+    } else {
+        if(! /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/.test(MobileNo)) {
+            alert("Mobile Number Not Valid")
+            return false
+        }
+    }
     if(!NoOfFamilyMembers) {
         alert("Please Select Number Of Family Member");
         return false;
